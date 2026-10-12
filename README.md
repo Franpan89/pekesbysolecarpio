@@ -55,8 +55,8 @@ lib/
 
 Todo está marcado con comentarios `TODO` o notas en el propio código:
 
-- **`lib/data/mock.ts`**: número de WhatsApp real, dirección exacta, horario,
-  catálogo real de accesorios y tarifario real de servicios.
+- **`lib/data/mock.ts`**: dirección exacta, horario, catálogo real de
+  accesorios y tarifario real de servicios. (El número de WhatsApp ya es el real.)
 - **`lib/data/mock.ts` → `TESTIMONIALS`**: son placeholders (`placeholder: true`) y **no se publican**: la sección "Clientes felices" del home aparece sola en cuanto agregues reseñas reales (sin esa bandera).
 - **`lib/data/faq.ts`**: las preguntas frecuentes se arman con datos del sitio (tarifas, duraciones, horario, envío), así que se actualizan solas. Antes de agregar respuestas sobre cancelaciones, vacunas o métodos de pago, confirma la política real con Sole.
 - **`app/opengraph-image.png`**: imagen que se ve al compartir el link (WhatsApp, Instagram, etc.), generada con el logo oficial.

@@ -12,7 +12,7 @@ export const SETTINGS: SiteSettings = {
   brandName: 'Pekes by Sole Carpio',
   city: 'Cuenca',
   whatsapp: {
-    number: '593000000000', // TODO: reemplazar por el número real de WhatsApp Business
+    number: '593963073006', // +593 96 307 3006 — formato wa.me: solo dígitos, con código de país
     greeting: 'Hola Pekes 🐾, quiero más información.',
   },
   address: 'Cuenca, Ecuador — completar dirección exacta del local',
