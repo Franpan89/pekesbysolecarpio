@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Paleta — derivada del logo oficial de Pekes by Sole Carpio.
+       Colores de marca (muestreados del logo): menta #5BBA9B, menta suave
+       #B3DBD3, dorado de la corona #FBA424 y gris del script #878787.
+       `primary` es una versión más profunda del menta de marca para que el
+       texto blanco sobre botones y hero cumpla contraste AA. */
+    --primary: 34 119 91;          /* #22775B menta profundo — botones, hero, texto de marca */
+    --primary-soft: 37 133 101;    /* #258565 hover */
+    --mint: 91 186 155;            /* #5BBA9B menta exacto del logo — acentos y detalles */
+    --mint-soft: 179 219 211;      /* #B3DBD3 sombra menta del logo */
+    --secondary: 251 164 36;       /* #FBA424 dorado de la corona — CTAs */
+    --secondary-soft: 253 200 110; /* #FDC86E */
+    --terracotta: 178 92 28;       /* #B25C1C naranja profundo (sombras de la corona) */
+    --terracotta-soft: 232 160 100;
+    --accent-soft: 221 241 234;    /* #DDF1EA menta muy suave — chips y círculos */
+
+    --neutral-900: 28 42 38;       /* #1C2A26 tinta verde-carbón */
+    --neutral-700: 60 78 72;
+    --neutral-600: 98 115 109;
+    --neutral-400: 150 165 160;
+    --neutral-200: 214 230 224;    /* bordes con tinte menta */
+    --neutral-100: 243 250 247;    /* #F3FAF7 fondo blanco-menta */
+    --neutral-50: 249 253 251;
+    --surface: 255 255 255;
+
+    --success: 37 133 101;
+    --danger: 189 66 51;
+    --whatsapp: 32 156 91;         /* verde WhatsApp, distinguible del menta de marca */
+  }
+
+  html {
+    background: rgb(var(--neutral-100));
+    color: rgb(var(--neutral-900));
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-jakarta), system-ui, sans-serif;
+  }
+
+  ::selection {
+    background: rgb(var(--secondary) / 0.35);
+    color: rgb(var(--neutral-900));
+  }
+
+  *:focus-visible {
+    outline: 2px solid rgb(var(--primary));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  .font-display {
+    font-family: var(--font-fraunces), ui-serif, Georgia, serif;
+    letter-spacing: -0.02em;
+    font-optical-sizing: auto;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1320px] px-5 sm:px-8 lg:px-10;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold
+           transition-all duration-200 ease-wag
+           disabled:opacity-50 disabled:cursor-not-allowed
+           min-h-[44px];
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-soft active:scale-[0.97] shadow-lift;
+  }
+
+  .btn-secondary {
+    @apply btn bg-secondary text-ink-900 hover:brightness-105 active:scale-[0.97];
+  }
+
+  .btn-whatsapp {
+    @apply btn bg-whatsapp text-white hover:brightness-105 active:scale-[0.97];
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-ink-900 hover:bg-ink-200/40;
+  }
+
+  .btn-outline {
+    @apply btn border border-ink-200 text-ink-900 bg-surface hover:border-ink-900;
+  }
+
+  .btn-dark {
+    @apply btn bg-ink-900 text-white hover:bg-ink-700 active:scale-[0.97];
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-accent px-3.5 py-1.5 text-xs font-semibold text-primary;
+  }
+
+  .chip-active {
+    @apply chip bg-ink-900 text-white;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-ink-200 bg-surface px-4 py-3 text-sm
+           placeholder:text-ink-400
+           focus-visible:border-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/15
+           min-h-[44px];
+  }
+
+  .label {
+    @apply text-2xs font-bold uppercase tracking-[0.14em] text-ink-600;
+  }
+
+  .card {
+    @apply rounded-2xl bg-surface border border-ink-200/60;
+  }
+
+  .pill-nav {
+    @apply inline-flex items-center gap-2 rounded-full border border-ink-200 bg-surface px-4 py-2 text-sm font-medium whitespace-nowrap
+           hover:border-ink-900 hover:bg-ink-900 hover:text-white transition-colors;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-rise {
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-8px) rotate(-2deg); }
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes wag {
+    0%, 100% { transform: rotate(0deg); }
+    25%      { transform: rotate(-8deg); }
+    75%      { transform: rotate(8deg); }
+  }
+  .animate-wag {
+    animation: wag 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes drift {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-14px); }
+  }
+}
